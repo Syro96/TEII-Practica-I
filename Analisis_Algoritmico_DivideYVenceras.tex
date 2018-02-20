@@ -12,6 +12,7 @@
 \usepackage{import}
 \usepackage{fancyhdr}
 \usepackage{tocloft}
+\usepackage{adjustbox}
 
 \hypersetup{
     colorlinks=true,
@@ -28,7 +29,7 @@
 \renewcommand{\footrulewidth}{0.2pt}
 \renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
 
-\newcommand{\bold}[1]{\textbf{#1}}
+
 
 \title{Análisis algorítmico: Divide y vencerás}
 \author{Siro Sánchez del Amo}
@@ -36,6 +37,10 @@
 
 \begin{document}
 \maketitle
+\vfill 
+   {\begin{flushright}
+   \includegraphics[width=4cm]{umulogo}
+   \end{flushright}}
 
 \thispagestyle{empty}
 \newpage
@@ -55,6 +60,49 @@ El problema que se plantea es la multiplicación de números muy largos, lo cual
 
 \section{Análisis de los algoritmos}
 \subsection{Multiplicación directa}
+Calculamos la cota inferior:
+$$t_m(n)=14+4+5n[Mult Simple]+\sum_{i=0}^{n-1} (2+4+5 n[MultSimple]+12+4 n[Suma]+ \sum_{j=0}^{m} (2))$$
+$$t_m(n)=18+5n+18n-18+9n^2-9n+2mn-2m$$
+$$t_m(n)=9n^2-14n+2mn-2m$$
+$$t_m(n)\in\Omega(n^2)$$
+\\
+Calculamos cota superior:
+$$t_M(n)=5+6+3+7+5n[MultSimple]+ \sum_{i=0}^{n-1}(2+7n+5[MultSimple]+\sum_{j=0}^{m}(2)+17+8n[Suma]+1)+4$$
+$$t_M(n)=25+5n-2n-2+7n^27n+5n-5+2mn-2m+17n-17+8n^2-8n+n-1$$
+$$t_M(n)=15n^2+15n+2mn-2m$$
+$$t_M(n)\in O(n^2)$$
+\\
+Lo que al final deriva en:
+$$
+	\left.
+        \begin{array}{ll}
+           	t_M(n)\in O(n^2) \\
+			t_m(n)\in\Omega(n^2)
+        \end{array}
+    \right\} t_p(n)\in \theta(n^2).
+$$
+\newpage
+\begin{center}
+En la siguiente tabla se pueden ver los distintos experimentos realizados: 
+\end{center}
+\label{md-table}
+\begin{adjustbox}{width=0.5\textwidth,center=\textwidth}
+\begin{tabular}{|l|l|l|}
+\hline
+{Dígitos} 					   & {T.experimental} 					   & {Memoria} 						\\ \hline
+1                              & $\sim$0.00025s                        & Less than 1KB                  \\ \hline
+2                              & $\sim$0.00031s                        & Less than 1KB                  \\ \hline
+4                              & $\sim$0.00038s                        & Less than 1KB                  \\ \hline
+8                              & $\sim$0.00049s                        & Less than 1KB                  \\ \hline
+16                             & $\sim$0.00125s                        & Less than 1KB                  \\ \hline
+32                             & $\sim$0.00450s                        & Less than 1KB                  \\ \hline
+64                             & $\sim$0.01426s                        & Less than 1KB                  \\ \hline
+128                            & $\sim$0.05532s                        & Less than 1KB                  \\ \hline
+256                            & $\sim$0.14827s                        & $\sim$33KB                     \\ \hline
+512                            & $\sim$0.36122s                        & $\sim$66KB                     \\ \hline
+1024                           & $\sim$1.22063s                        & $\sim$132KB                    \\ \hline
+\end{tabular}
+\end{adjustbox}
 
 \subsection{Divide y vencerás}
 
