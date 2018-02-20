@@ -4,6 +4,7 @@
 \usepackage{verbatim}
 \usepackage[spanish]{babel}
 \usepackage{color}
+\usepackage{xcolor}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{kantlipsum}
 \usepackage{hyperref}
@@ -19,6 +20,32 @@
     linktoc=page,
     linkcolor=red,
 }
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle}{
+    backgroundcolor=\color{backgroundColour},   
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mPurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=C
+}
+
 
 \pagestyle{fancy}
 \lhead{Tecnologías específicas de la ingeniería informática}
@@ -58,6 +85,7 @@ El problema que se plantea es la multiplicación de números muy largos, lo cual
 
 \subsection{Solución al problema}
 
+\newpage
 \section{Análisis de los algoritmos}
 \subsection{Multiplicación directa}
 Calculamos la cota inferior:
@@ -83,7 +111,7 @@ $$
 $$
 \newpage
 \begin{center}
-En la siguiente tabla se pueden ver los distintos experimentos realizados: 
+En la siguiente tabla se pueden ver los distintos experimentos realizados para este algoritmo: 
 \end{center}
 \label{md-table}
 \begin{adjustbox}{width=0.5\textwidth,center=\textwidth}
@@ -104,9 +132,101 @@ En la siguiente tabla se pueden ver los distintos experimentos realizados:
 \end{tabular}
 \end{adjustbox}
 
+\newpage
 \subsection{Divide y vencerás}
+La función \texttt{DYV} es una función recursiva, así pues se calculará de manera distinta:
+$$
+	t(n) = \left\{
+        \begin{array}{ll}
+           	t(n)=n^2 & n=base \\
+			t(n)=8n+4t(\frac{n}{2}) & n>base
+        \end{array}
+    \right.
+$$
 
+$$n = 2^k \rightarrow t(2^k)-4t (2^{k-1})=0$$
+$$\frac{x^{2^k}-4x^{2^{k-1}}}{x^{2^{k-1}}} = x-4 $$
+$$ (x-4)=8 \times 2^k $$
+$$ (x-4)=(x-2) $$
+$$ c_1\times 2^k+c_2 \times 4^k=0 $$
+$$ c_1 \times 2^{\log n}+c_2 \times 4^{\log n} $$
+$$ c_1 \times n^{log 2}+c_2 \times n^{log 4} $$
+$$ c_1 \times n+c_2 \times n^2 $$
+$$ t(n)\in O(n^2) $$
+
+\begin{center}
+En la siguiente tabla se pueden ver los distintos experimentos realizados para este algoritmo: 
+\end{center}
+\label{dyv-table}
+\begin{adjustbox}{width=0.5\textwidth,center=\textwidth}
+\begin{tabular}{|l|l|l|}
+\hline
+{Dígitos} 					   & {T.experimental} 					   	& {Memoria} 					 \\ \hline
+1                              & $\sim$0.00002s                         & Less than 1KB                  \\ \hline
+2                              & $\sim$0.000055s                        & Less than 1KB                  \\ \hline
+4                              & $\sim$0.00012s                        	& Less than 1KB                  \\ \hline
+8                              & $\sim$0.00051s                        	& Less than 1KB                  \\ \hline
+16                             & $\sim$0.00481s                        	& Less than 1KB                  \\ \hline
+32                             & $\sim$0.01741s                       	& Less than 1KB                  \\ \hline
+64                             & $\sim$0.05497s                        	& Less than 1KB                  \\ \hline
+128                            & $\sim$0.13821s                        	& Less than 1KB                  \\ \hline
+256                            & $\sim$0.38921s                       	& $\sim$99KB                     \\ \hline
+512                            & $\sim$1.52236s                       	& $\sim$174KB                    \\ \hline
+1024                           & $\sim$6.31317s                        	& $\sim$396KB                    \\ \hline
+\end{tabular}
+\end{adjustbox}
+
+\newpage
 \subsection{Karatsuba y Ofman}
+La función \texttt{KYO} es una función recursiva, así pues se calculará de manera distinta:
+$$
+	t(n) = \left\{
+        \begin{array}{ll}
+           	t(n)=n^2 & n=base \\
+			t(n)=10n+3t(\frac{n}{2}) & n>base
+        \end{array}
+    \right.
+$$
+$$n = 2^k \rightarrow t(2^k)-3t(2^{k-1})=0$$
+$$\frac{x^{2^k}-3x^{2^{k-1}}}{x^{2^{k-1}}} = x-3 $$
+$$ (x-3)=10 \times 2^k $$
+$$ (x-3)=(x-2) $$
+$$ c_1\times 2^k+c_2 \times 3^k=0 $$
+$$ c_1 \times 2^{\log n}+c_2 \times 3^{\log n} $$
+$$ c_1 \times n^{log 2}+c_2 \times n^{log 3} $$
+$$ c_1 \times n+c_2 \times n^{1.59} $$
+$$ t(n)\in O(n^{1.59}) $$
 
+\begin{center}
+En la siguiente tabla se pueden ver los distintos experimentos realizados para este algoritmo: 
+\end{center}
+\label{kyo-table}
+\begin{adjustbox}{width=0.5\textwidth,center=\textwidth}
+\begin{tabular}{|l|l|l|}
+\hline
+{Dígitos} 					   & {T.experimental} 					   	& {Memoria} 					 \\ \hline
+1                              & $\sim$0.000021s                        & Less than 1KB                  \\ \hline
+2                              & $\sim$0.00012s                        	& Less than 1KB                  \\ \hline
+4                              & $\sim$0.00049s                        	& Less than 1KB                  \\ \hline
+8                              & $\sim$0.00165s                        	& Less than 1KB                  \\ \hline
+16                             & $\sim$0.00422s                        	& Less than 1KB                  \\ \hline
+32                             & $\sim$0.00826s                       	& Less than 1KB                  \\ \hline
+64                             & $\sim$0.01724s                      	& Less than 1KB                  \\ \hline
+128                            & $\sim$0.02942s                        	& Less than 1KB                  \\ \hline
+256                            & $\sim$0.08425s                      	& Less than 10KB                 \\ \hline
+512                            & $\sim$0.36829s                      	& Less than 20KB                 \\ \hline
+1024                           & $\sim$1.09802s                        	& Less than 30KB                 \\ \hline
+\end{tabular}
+\end{adjustbox}
+
+\newpage
 \section{Conclusiones experimentales}
+Como conclusiones podemos sacar varias:
+	\begin{enumerate}
+	\item Nuestro algoritmo de \texttt{Divide y Vencerás} los tiempos de ejecución se descontrolaban en valores altos, es posible debido a algunas acciones del código que lo ralentizan o puede que lo hayamos programado mal.
+	\item \texttt{Multiplicación directa} y \texttt{Karatsuba} dan valores bastante coherentes.
+	\item El algoritmo preferido es sin duda \texttt{Karatsuba}. Al principio no se diferencia mucho de \texttt{Multiplicación directa} pero conforme van aumentando la cantidad de números a multiplicar se nota.
+	\item En cuanto a la partición base de los algoritmos, cuanto menos base, más recursividad tendrá que realizar, eso quiere decir más tiempo. Entonces si sólo realizáramos una única recursividad y las particiones por método directo, conseguiremos tiempos muy rápidos.
+	\end{enumerate}
+	
 \end{document}
