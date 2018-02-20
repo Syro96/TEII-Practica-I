@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{kantlipsum}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{import}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+
+\hypersetup{
+    colorlinks=true,
+    linktoc=page,
+    linkcolor=red,
+}
+
+\pagestyle{fancy}
+\lhead{Tecnologías específicas de la ingeniería informática}
+\chead{}
+\cfoot{\thepage}
+\rhead{}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
+
+\newcommand{\bold}[1]{\textbf{#1}}
+
+\title{Análisis algorítmico: Divide y vencerás}
+\author{Siro Sánchez del Amo}
+\date{Febrero 2018}
+
+\begin{document}
+\maketitle
+
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\thispagestyle{fancy}
+\newpage
+
+\section{Introducción}
+Este documento consiste en un análisis algorítmico de la técnicas ''Multiplicación directa'', ''Divide y vencerás'' y ''Karatsuba y Ofman''.
+
+\section{Algoritmo para ''Enteros largos''}
+\subsection{Definición del problema}
+El problema que se plantea es la multiplicación de números muy largos, lo cual a la larga puede dar problemas ya sea por llegar al límite o por lentitud de las operaciones, para poder realizar operaciones muy largas hemos usado listas y en cada posición de estas habrá un caracter, esto nos dará mas juego que usando simplemente enteros o doble precisión. Con esto en mano, procederemos al análisis de los algoritmos que hemos adaptado al problema.
+
+\subsection{Solución al problema}
+
+\section{Análisis de los algoritmos}
+\subsection{Multiplicación directa}
+
+\subsection{Divide y vencerás}
+
+\subsection{Karatsuba y Ofman}
+
+\section{Conclusiones experimentales}
+\end{document}
