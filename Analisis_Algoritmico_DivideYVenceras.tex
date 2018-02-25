@@ -14,12 +14,7 @@
 \usepackage{fancyhdr}
 \usepackage{tocloft}
 \usepackage{adjustbox}
-
-\hypersetup{
-    colorlinks=true,
-    linktoc=page,
-    linkcolor=red,
-}
+\usepackage{svg}
 
 \definecolor{mGreen}{rgb}{0,0.6,0}
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
@@ -46,7 +41,6 @@
     language=C
 }
 
-
 \pagestyle{fancy}
 \lhead{Tecnologías específicas de la ingeniería informática}
 \chead{}
@@ -66,7 +60,7 @@
 \maketitle
 \vfill 
    {\begin{flushright}
-   \includegraphics[width=4cm]{umulogo}
+   \includegraphics[width=4cm]{umulogo.jpg}
    \end{flushright}}
 
 \thispagestyle{empty}
@@ -77,15 +71,91 @@
 \newpage
 
 \section{Introducción}
-Este documento consiste en un análisis algorítmico de la técnicas ''Multiplicación directa'', ''Divide y vencerás'' y ''Karatsuba y Ofman''.
+Este documento consiste en un análisis algorítmico de la técnicas ''Multiplicación directa'', ''Divide y vencerás'' y ''Karatsuba y Ofman''. Toda teoría, conocimiento adquirido y algoritmos vienen dados en el libro de la asignatura de AED2 \cite{AED2}
 
 \section{Algoritmo para ''Enteros largos''}
 \subsection{Definición del problema}
 El problema que se plantea es la multiplicación de números muy largos, lo cual a la larga puede dar problemas ya sea por llegar al límite o por lentitud de las operaciones, para poder realizar operaciones muy largas hemos usado listas y en cada posición de estas habrá un caracter, esto nos dará mas juego que usando simplemente enteros o doble precisión. Con esto en mano, procederemos al análisis de los algoritmos que hemos adaptado al problema.
 
 \subsection{Solución al problema}
-
+\subsubsection{Multiplicación directa}
+La multiplicación directa fue programada con el siguiente código. Las funciones elementales se han omitido.
+\begin{lstlisting}[style=CStyle]
+list<char> multiplicacionDirecta(list<char> EL1,list<char> EL2){
+	list<char> resultado;
+	list<char> auxiliar;
+	int negativo=0;
+	list<char>::iterator it1=EL1.begin();
+	list<char>::iterator it2=EL2.begin();
+	if((*it1)=='-') {
+		EL1.erase(it1);
+		negativo++;
+	}
+	if((*it2)=='-') {
+		EL2.erase(it2);
+		negativo++;
+	}
+	it2=EL2.end();
+	it2--;
+	int desplazamiento=1;
+	resultado=multiplicacionSimple(EL1,(*it2));
+	for(unsigned int i=0;i<EL2.size()-1;i++){
+		it2--;
+		auxiliar=multiplicacionSimple(EL1,(*it2));
+		for(int j=0;j<desplazamiento;j++) auxiliar.insert(auxiliar.end(),'0');
+		resultado=suma(resultado,auxiliar);
+		desplazamiento++;
+	}
+	list<char> uno;
+	uno.insert(uno.begin(),'1');
+	if(negativo==1 && !menor(resultado,uno)) resultado.insert(resultado.begin(),'-');
+	return resultado;
+}
+\end{lstlisting}
 \newpage
+
+\subsubsection{Divide y vencerás}
+Divide y vencerás fue programado con el siguiente código. Las funciones elementales se han omitido.
+\begin{lstlisting}[style=CStyle]
+list<char> DYV(list<char> EL1,list<char> EL2,int n,int base){
+	list<char> resultado;
+	if(n==base) return multiplicacionDirecta(EL1,EL2);
+	else{
+		list<char> w = divisionSuperior(EL1);
+		list<char> y = divisionSuperior(EL2);
+		list<char> x = divisionInferior(EL1);
+		list<char> z = divisionInferior(EL2);
+		list<char> m1 = DYV(w,y,n/2, base);
+		list<char> m2 = DYV(w,z,n/2, base);
+		list<char> m3 = DYV(x,y,n/2, base);
+		list<char> m4 = DYV(x,z,n/2, base);
+		resultado=suma(desplazar(m1,n),suma(desplazar(suma(m2,m3),n/2),m4));
+		return resultado;
+	}
+}
+\end{lstlisting}
+
+\subsubsection{Karatsuba y Ofman}
+Karatsuba fue programado con el siguiente código. Las funciones elementales se han omitido.
+\begin{lstlisting}[style=CStyle]
+list<char> KYO(list<char> EL1, list<char> EL2, int n, int base){
+	list<char> resultado;
+	if (n==base) return multiplicacionDirecta(EL1,EL2);
+	else{
+		list<char> w = divisionSuperior(EL1);
+		list<char> y = divisionSuperior(EL2);
+		list<char> x = divisionInferior(EL1);
+		list<char> z = divisionInferior(EL2);
+		list<char> m1 = KYO(w,y,n/2, base);
+		list<char> m2 = KYO(x,z,n/2, base);
+		list<char> m3 = KYO(restar(w,x),restar(z,y),n/2,base);
+		resultado=suma(desplazar(m1,n),suma(desplazar(suma(suma(m3,m2),m1),n/2),m2));
+		return resultado;
+	};
+}
+\end{lstlisting}
+\newpage
+
 \section{Análisis de los algoritmos}
 \subsection{Multiplicación directa}
 Calculamos la cota inferior:
@@ -163,16 +233,16 @@ En la siguiente tabla se pueden ver los distintos experimentos realizados para e
 \hline
 {Dígitos} 					   & {T.experimental} 					   	& {Memoria} 					 \\ \hline
 1                              & $\sim$0.00002s                         & Less than 1KB                  \\ \hline
-2                              & $\sim$0.000055s                        & Less than 1KB                  \\ \hline
+2                              & $\sim$0.00005s                        	& Less than 1KB                  \\ \hline
 4                              & $\sim$0.00012s                        	& Less than 1KB                  \\ \hline
 8                              & $\sim$0.00051s                        	& Less than 1KB                  \\ \hline
 16                             & $\sim$0.00481s                        	& Less than 1KB                  \\ \hline
 32                             & $\sim$0.01741s                       	& Less than 1KB                  \\ \hline
-64                             & $\sim$0.05497s                        	& Less than 1KB                  \\ \hline
-128                            & $\sim$0.13821s                        	& Less than 1KB                  \\ \hline
-256                            & $\sim$0.38921s                       	& $\sim$99KB                     \\ \hline
-512                            & $\sim$1.52236s                       	& $\sim$174KB                    \\ \hline
-1024                           & $\sim$6.31317s                        	& $\sim$396KB                    \\ \hline
+64                             & $\sim$0.02497s                        	& Less than 1KB                  \\ \hline
+128                            & $\sim$0.05821s                        	& Less than 1KB                  \\ \hline
+256                            & $\sim$0.08921s                       	& $\sim$79KB                     \\ \hline
+512                            & $\sim$0.16236s                       	& $\sim$104KB                    \\ \hline
+1024                           & $\sim$1.18317s                        	& $\sim$200KB                    \\ \hline
 \end{tabular}
 \end{adjustbox}
 
@@ -205,7 +275,7 @@ En la siguiente tabla se pueden ver los distintos experimentos realizados para e
 \begin{tabular}{|l|l|l|}
 \hline
 {Dígitos} 					   & {T.experimental} 					   	& {Memoria} 					 \\ \hline
-1                              & $\sim$0.000021s                        & Less than 1KB                  \\ \hline
+1                              & $\sim$0.00002s                        	& Less than 1KB                  \\ \hline
 2                              & $\sim$0.00012s                        	& Less than 1KB                  \\ \hline
 4                              & $\sim$0.00049s                        	& Less than 1KB                  \\ \hline
 8                              & $\sim$0.00165s                        	& Less than 1KB                  \\ \hline
@@ -214,19 +284,28 @@ En la siguiente tabla se pueden ver los distintos experimentos realizados para e
 64                             & $\sim$0.01724s                      	& Less than 1KB                  \\ \hline
 128                            & $\sim$0.02942s                        	& Less than 1KB                  \\ \hline
 256                            & $\sim$0.08425s                      	& Less than 10KB                 \\ \hline
-512                            & $\sim$0.36829s                      	& Less than 20KB                 \\ \hline
+512                            & $\sim$0.09029s                      	& Less than 20KB                 \\ \hline
 1024                           & $\sim$1.09802s                        	& Less than 30KB                 \\ \hline
 \end{tabular}
 \end{adjustbox}
 
 \newpage
 \section{Conclusiones experimentales}
+
+\begin{figure}[htb]
+\centering{\scalebox{.5}{\input{grafica.pdf_tex}}}
+\caption{Gráfica de los tiempos de ejecución}
+\end{figure}
+
 Como conclusiones podemos sacar varias:
-	\begin{enumerate}
-	\item Nuestro algoritmo de \texttt{Divide y Vencerás} los tiempos de ejecución se descontrolaban en valores altos, es posible debido a algunas acciones del código que lo ralentizan o puede que lo hayamos programado mal.
-	\item \texttt{Multiplicación directa} y \texttt{Karatsuba} dan valores bastante coherentes.
-	\item El algoritmo preferido es sin duda \texttt{Karatsuba}. Al principio no se diferencia mucho de \texttt{Multiplicación directa} pero conforme van aumentando la cantidad de números a multiplicar se nota.
+	\begin{itemize}
+	\item El algoritmo preferido es sin duda \texttt{Karatsuba}. Al principio no se diferencia mucho de \texttt{Multiplicación directa} y \texttt{Divide y vencerás} pero conforme van aumentando la cantidad de números a multiplicar se nota.
 	\item En cuanto a la partición base de los algoritmos, cuanto menos base, más recursividad tendrá que realizar, eso quiere decir más tiempo. Entonces si sólo realizáramos una única recursividad y las particiones por método directo, conseguiremos tiempos muy rápidos.
-	\end{enumerate}
+	\end{itemize}
 	
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{ReferenciasTex} 
+
 \end{document}

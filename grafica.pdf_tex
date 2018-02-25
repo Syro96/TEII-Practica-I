@@ -1,0 +1,115 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'grafica.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{821.25bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.73515982)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{grafica.pdf}}%
+    \put(0.06392694,0.14155251){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.06392694,0.14155251){\makebox(0,0)[lb]{\smash{0.0}}}%
+    \put(0.06392694,0.17716895){\makebox(0,0)[lb]{\smash{0.1}}}%
+    \put(0.06392694,0.17716895){\makebox(0,0)[lb]{\smash{0.1}}}%
+    \put(0.06392694,0.21278539){\makebox(0,0)[lb]{\smash{0.2}}}%
+    \put(0.06392694,0.21278539){\makebox(0,0)[lb]{\smash{0.2}}}%
+    \put(0.06392694,0.24840183){\makebox(0,0)[lb]{\smash{0.3}}}%
+    \put(0.06392694,0.24840183){\makebox(0,0)[lb]{\smash{0.3}}}%
+    \put(0.06392694,0.28401826){\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.06392694,0.28401826){\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.06392694,0.3196347){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.06392694,0.3196347){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.06392694,0.35525114){\makebox(0,0)[lb]{\smash{0.6}}}%
+    \put(0.06392694,0.35525114){\makebox(0,0)[lb]{\smash{0.6}}}%
+    \put(0.06392694,0.39086758){\makebox(0,0)[lb]{\smash{0.7}}}%
+    \put(0.06392694,0.39086758){\makebox(0,0)[lb]{\smash{0.7}}}%
+    \put(0.06392694,0.42739726){\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.06392694,0.42739726){\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.06392694,0.4630137){\makebox(0,0)[lb]{\smash{0.9}}}%
+    \put(0.06392694,0.4630137){\makebox(0,0)[lb]{\smash{0.9}}}%
+    \put(0.06392694,0.49863014){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.06392694,0.49863014){\makebox(0,0)[lb]{\smash{1.0}}}%
+    \put(0.06392694,0.53424658){\makebox(0,0)[lb]{\smash{1.1}}}%
+    \put(0.06392694,0.53424658){\makebox(0,0)[lb]{\smash{1.1}}}%
+    \put(0.06392694,0.56986301){\makebox(0,0)[lb]{\smash{1.2}}}%
+    \put(0.06392694,0.56986301){\makebox(0,0)[lb]{\smash{1.2}}}%
+    \put(0.06392694,0.60547945){\makebox(0,0)[lb]{\smash{1.3}}}%
+    \put(0.06392694,0.60547945){\makebox(0,0)[lb]{\smash{1.3}}}%
+    \put(0.06392694,0.64109589){\makebox(0,0)[lb]{\smash{1.4}}}%
+    \put(0.06392694,0.64109589){\makebox(0,0)[lb]{\smash{1.4}}}%
+    \put(0.05388128,0.36986301){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Segundos}}}}%
+    \put(0.05388128,0.36986301){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Segundos}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{grafica.pdf}}%
+    \put(0.0871787,0.12959041){\rotatebox{20}{\makebox(0,0)[lb]{\smash{1}}}}%
+    \put(0.0871787,0.12959041){\rotatebox{20}{\makebox(0,0)[lb]{\smash{1}}}}%
+    \put(0.1739367,0.12896573){\rotatebox{20}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.1739367,0.12896573){\rotatebox{20}{\makebox(0,0)[lb]{\smash{2}}}}%
+    \put(0.26069468,0.12865342){\rotatebox{20}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.26069468,0.12865342){\rotatebox{20}{\makebox(0,0)[lb]{\smash{4}}}}%
+    \put(0.35019241,0.12896573){\rotatebox{20}{\makebox(0,0)[lb]{\smash{8}}}}%
+    \put(0.35019241,0.12896573){\rotatebox{20}{\makebox(0,0)[lb]{\smash{8}}}}%
+    \put(0.43238419,0.1267785){\rotatebox{20}{\makebox(0,0)[lb]{\smash{16}}}}%
+    \put(0.43238419,0.1267785){\rotatebox{20}{\makebox(0,0)[lb]{\smash{16}}}}%
+    \put(0.52005542,0.12646619){\rotatebox{20}{\makebox(0,0)[lb]{\smash{32}}}}%
+    \put(0.52005542,0.12646619){\rotatebox{20}{\makebox(0,0)[lb]{\smash{32}}}}%
+    \put(0.6086399,0.12646619){\rotatebox{20}{\makebox(0,0)[lb]{\smash{64}}}}%
+    \put(0.6086399,0.12646619){\rotatebox{20}{\makebox(0,0)[lb]{\smash{64}}}}%
+    \put(0.68991843,0.1242799){\rotatebox{20}{\makebox(0,0)[lb]{\smash{128}}}}%
+    \put(0.68991843,0.1242799){\rotatebox{20}{\makebox(0,0)[lb]{\smash{128}}}}%
+    \put(0.77758968,0.12396754){\rotatebox{20}{\makebox(0,0)[lb]{\smash{256}}}}%
+    \put(0.77758968,0.12396754){\rotatebox{20}{\makebox(0,0)[lb]{\smash{256}}}}%
+    \put(0.86526091,0.12396754){\rotatebox{20}{\makebox(0,0)[lb]{\smash{512}}}}%
+    \put(0.86526091,0.12396754){\rotatebox{20}{\makebox(0,0)[lb]{\smash{512}}}}%
+    \put(0.94836593,0.12178125){\rotatebox{20}{\makebox(0,0)[lb]{\smash{1024}}}}%
+    \put(0.94836593,0.12178125){\rotatebox{20}{\makebox(0,0)[lb]{\smash{1024}}}}%
+    \put(0.51141553,0.10136986){\makebox(0,0)[lb]{\smash{Digitos}}}%
+    \put(0.51141553,0.10136986){\makebox(0,0)[lb]{\smash{Digitos}}}%
+    \put(0.52876712,0.08493151){\makebox(0,0)[lb]{\smash{ }}}%
+    \put(0.52876712,0.08493151){\makebox(0,0)[lb]{\smash{ }}}%
+    \put(0.44018265,0.7196347){\makebox(0,0)[lb]{\smash{Evolución Algorítmica}}}%
+    \put(0.44018265,0.7196347){\makebox(0,0)[lb]{\smash{Evolución Algorítmica}}}%
+  \end{picture}%
+\endgroup%
