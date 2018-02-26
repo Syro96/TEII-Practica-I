@@ -15,18 +15,18 @@
 \usepackage{tocloft}
 \usepackage{adjustbox}
 \usepackage{svg}
+\usepackage{titling}
 
 \definecolor{mGreen}{rgb}{0,0.6,0}
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
-\definecolor{mPurple}{rgb}{0.58,0,0.82}
 \definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{CStyle}{
     backgroundcolor=\color{backgroundColour},   
-    commentstyle=\color{mGreen},
-    keywordstyle=\color{magenta},
+    commentstyle=\color{blue},
+    keywordstyle=\color{red},
     numberstyle=\tiny\color{mGray},
-    stringstyle=\color{mPurple},
+    stringstyle=\color{mGreen},
     basicstyle=\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,                 
@@ -43,27 +43,35 @@
 
 \pagestyle{fancy}
 \lhead{Tecnologías específicas de la ingeniería informática}
+\rhead{3º Grado de Ingeniería Informática}
 \chead{}
 \cfoot{\thepage}
-\rhead{}
 \renewcommand{\headrulewidth}{0.2pt}
 \renewcommand{\footrulewidth}{0.2pt}
 \renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
 
+\font\fuente=cmr12 at 40pt
 
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
 
-\title{Análisis algorítmico: Divide y vencerás}
+\title{\fuente Análisis algorítmico: Divide y vencerás}
 \author{Siro Sánchez del Amo}
 \date{Febrero 2018}
 
 \begin{document}
-\maketitle
+\begin{titlingpage}
 \vfill 
-   {\begin{flushright}
-   \includegraphics[width=4cm]{umulogo.jpg}
-   \end{flushright}}
+\maketitle
+
+\par
+\raisebox{-.5\height}{\includegraphics[width=4cm]{logo-facultad-informatica-500-300x114.jpg}}%
+\hfill
+\raisebox{-.5\height}{\includegraphics[width=4cm]{umulogo.jpg}}%
+\par
 
 \thispagestyle{empty}
+\end{titlingpage}
 \newpage
 
 \tableofcontents
